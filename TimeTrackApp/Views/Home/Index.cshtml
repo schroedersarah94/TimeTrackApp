@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <div class="text-center">
+        <h1>Time Trackr.</h1>
+
+        @using(Html.BeginForm("Main", "Home"))
+        {
+            <input type="text" name="pin" />
+            <input type="submit" value="Log In" />
+        }
+    </div>

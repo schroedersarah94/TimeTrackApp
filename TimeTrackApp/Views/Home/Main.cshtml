@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+
+    //WIP, FIGURE OUT HOW TO GLOBALLY STORE EMPLOYEE CREDENTIALS AND PASS THEM INTO THE MAIN VIEW (THIS ONE)
+}
+
+<div class="text-center">
+    <h1>Time Trackr.</h1>
+    <div>
+        <div>User information, blah blah blah</div>
+        <div>Clock In/Out</div> <!-- on click edit "timeentry" record and edit employee record "clockedin" boolean -->
+        <div>Request PTO</div> <!-- link to PTO request form page -->
+        <div>Admin Page</div> <!-- link to admin page | only show if logged in user is admin role (1 i think) -->
+    </div>
+
+    <div>
+        <div>Time Entries</div>
+        @Html.Partial("~/Views/Shared/_UserTimeEntries.cshtml")
+    </div>
+
+    <div>
+        <div>PTO Request Status</div>
+        @Html.Partial("~/Views/Shared/_UserPTORequestStatus.cshtml")
+    </div>
+
+</div>
