@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TimeTrackingApplication.Models.PTORequest>
+
+@{ 
+    //TODO: BRING USER LOGIN INFORMATION TO FILTER PTOREQUEST MODEL BY EMPLOYEE ID
+}
+
+<!-- THIS PARTIAL VIEW DISPLAYS A TABLE OF PTO REQUEST STATUS' BASED ON GIVEN USER-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+            }
+        </tbody>
+</table>

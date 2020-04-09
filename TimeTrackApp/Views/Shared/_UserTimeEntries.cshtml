@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TimeTrackingApplication.Models.TimeEntry>
+
+@{
+    //TODO: BRING USER LOGIN INFORMATION TO FILTER TIMEENTRY MODEL BY EMPLOYEE ID
+}
+
+<!-- THIS PARTIAL VIEW DISPLAYS A TABLE OF TIME ENTRIES BASED ON GIVEN USER-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClockIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClockOut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- THIS IS NOT WORKING DUE TO MODEL ISSUE -->
+        @*@foreach (var item in loggedUserEntries)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClockIn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClockOut)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+            }*@
+    </tbody>
+</table>

@@ -20,27 +20,9 @@ namespace TimeTrackApp.Controllers
         }
 
         // GET: Roles
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult> Index()
         {
             return View(await _context.Roles.ToListAsync());
-        }
-
-        // GET: Roles/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            return View(role);
         }
 
         // GET: Roles/Create
@@ -114,35 +96,6 @@ namespace TimeTrackApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(role);
-        }
-
-        // GET: Roles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            return View(role);
-        }
-
-        // POST: Roles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var role = await _context.Roles.FindAsync(id);
-            _context.Roles.Remove(role);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool RoleExists(int id)

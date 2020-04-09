@@ -13,6 +13,7 @@ namespace TimeTrackApp
 {
     public class Program
     {
+        //THIS IS THE MAIN METHOD THAT IS CALLED WHEN APPLICATION IS RAN
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();

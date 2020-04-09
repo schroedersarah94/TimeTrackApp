@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<!-- THIS PAGE IS ONLY AVAILABLE TO ADMIN ROLE EMPLOYEES, AND INCLUDES PATHWAYS TO ADMIN MANAGEMENT OF EMPLOYEES AND TIME ENTRIES -->
+
+<h1>Admin Page</h1>
+
+@Html.ActionLink("Manage Employees", "ManageEmployee", "Admin")
+@Html.ActionLink("Manage Time Entries", "ManageTimeEntry", "Admin")

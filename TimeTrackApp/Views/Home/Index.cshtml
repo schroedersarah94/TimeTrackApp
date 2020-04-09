@@ -2,15 +2,14 @@
     ViewData["Title"] = "Home Page";
 }
 
-<!--
+<!-- THIS IS THE LOG IN PAGE -->
 
-Project made with .Net Core 3.1, Entity Framework    
+    <div class="text-center">
+        <h1>Time Trackr.</h1>
 
--->
-<div class="text-center">
-    <h1>LOGIN PAGE</h1>
-    <input />
-    <div>
+        @using(Html.BeginForm("Main", "Home"))
+        {
+            <input type="text" name="pin" />
+            <input type="submit" value="Log In" />
+        }
     </div>
-    <button></button>
-</div>

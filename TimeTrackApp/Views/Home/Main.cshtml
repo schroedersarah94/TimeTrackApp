@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TimeTrackingApplication.Models.PTORequest>
+@{
+    ViewData["Title"] = "Home Page";
+    //TODO: 
+}
+
+<!--THIS IS THE MAIN DASHBOARD OF THE APPLICATION, IT DISPLAYS USER INFORMATION AND OPTIONS THE USER CAN TAKE-->
+
+<div class="text-center">
+    <h1>Time Trackr.</h1>
+    <div>
+        <div>User information, blah blah blah</div>
+        <button>Clock In/Out</button> <!-- on click edit "timeentry" record and edit employee record "clockedin" boolean, put method in HomeController -->
+        @Html.ActionLink("Request PTO", "Index", "PTORequests")
+        @Html.ActionLink("Admin Page", "Index", "Admin")
+    </div>
+
+    <div>
+        <div>Time Entries</div>
+
+        <!-- NEED TO GET MULTIPLE MODELS IN ONE VIEW WORKING!!!!! hskjfh kseuhrf sifhskdjfh wioef hwsikfh sd -->
+        @*@Html.Partial("~/Views/Shared/_UserTimeEntries.cshtml");*@ 
+
+    </div>
+
+
+    <div>
+        <div>PTO Request Status</div>
+        @Html.Partial("~/Views/Shared/_UserPTORequestStatus.cshtml")
+    </div>
+
+</div>
