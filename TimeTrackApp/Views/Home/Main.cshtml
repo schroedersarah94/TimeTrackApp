@@ -1,23 +1,28 @@
-﻿
+﻿@model IEnumerable<TimeTrackingApplication.Models.PTORequest>
 @{
     ViewData["Title"] = "Home Page";
-
-    //WIP, FIGURE OUT HOW TO GLOBALLY STORE EMPLOYEE CREDENTIALS AND PASS THEM INTO THE MAIN VIEW (THIS ONE)
+    //TODO: 
 }
+
+<!--THIS IS THE MAIN DASHBOARD OF THE APPLICATION, IT DISPLAYS USER INFORMATION AND OPTIONS THE USER CAN TAKE-->
 
 <div class="text-center">
     <h1>Time Trackr.</h1>
     <div>
         <div>User information, blah blah blah</div>
-        <div>Clock In/Out</div> <!-- on click edit "timeentry" record and edit employee record "clockedin" boolean -->
-        <div>Request PTO</div> <!-- link to PTO request form page -->
-        <div>Admin Page</div> <!-- link to admin page | only show if logged in user is admin role (1 i think) -->
+        <button>Clock In/Out</button> <!-- on click edit "timeentry" record and edit employee record "clockedin" boolean, put method in HomeController -->
+        @Html.ActionLink("Request PTO", "Index", "PTORequests")
+        @Html.ActionLink("Admin Page", "Index", "Admin")
     </div>
 
     <div>
         <div>Time Entries</div>
-        @Html.Partial("~/Views/Shared/_UserTimeEntries.cshtml")
+
+        <!-- NEED TO GET MULTIPLE MODELS IN ONE VIEW WORKING!!!!! hskjfh kseuhrf sifhskdjfh wioef hwsikfh sd -->
+        @*@Html.Partial("~/Views/Shared/_UserTimeEntries.cshtml");*@ 
+
     </div>
+
 
     <div>
         <div>PTO Request Status</div>

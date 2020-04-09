@@ -29,47 +29,30 @@ namespace TimeTrackApp.Controllers
 
 
 
-
-        /*public IActionResult AddRequest(Employee employee, int hours, string reason)
+        //WIP: this method will create a new request from the logged in user. WORRY ABOUT ERROR HANDLING LATER
+        public JsonResult AddRequest(Employee employee, int hours, string reason)
         {
-            //WIP: this method will create a new request from the logged in user
-            PTORequest newRequest = new PTORequest {
-                Employee = employee, //not sure if this can be passed as an employee object from the view
-                Hours = hours,
-                Reason = reason,
-                Status = _context.Statuses.Where(stat => stat.Name == "In Process").FirstOrDefault()
-            };
-
-            _context.Add(newRequest);
-            //_context.SaveChanges(); //commented to not destroy database
-            return View();
-        }
-        */
-
-
-
-
-
-
-
-
-        // GET: PTORequests/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            try
             {
-                return NotFound();
-            }
+                employee = _context.Employees.Where(emp => emp.Id == 26).FirstOrDefault(); //PLACEHOLDER VALUE FOR FUTURE LOGGED IN USER
 
-            var pTORequest = await _context.PTORequests
-                .Include(p => p.Employee)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (pTORequest == null)
+                PTORequest newRequest = new PTORequest
+                {
+                    Employee = employee, //not sure if this can be passed as an employee object from the view
+                    Hours = hours,
+                    Reason = reason,
+                    Status = _context.Statuses.Where(stat => stat.Name == "In Process").FirstOrDefault()
+                };
+
+                _context.Add(newRequest);
+                //_context.SaveChanges(); //comment this line for front-end testing (aka: comment to not flood db)
+                return Json("Success");
+
+            }
+            catch(Exception e)
             {
-                return NotFound();
-            }
-
-            return View(pTORequest);
+                return Json("Failure");
+            }            
         }
 
         public IActionResult Create()
@@ -91,7 +74,7 @@ namespace TimeTrackApp.Controllers
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id", pTORequest.EmployeeId);
             return View(pTORequest);
         }
-
+        
         // GET: PTORequests/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

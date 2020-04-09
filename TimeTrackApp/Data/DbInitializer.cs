@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeTrackingApplication.Models;
 
+
 namespace TimeTrackingApplication.Data
 {
+    //THIS CLASS HELPS INITIALIZE A NEW LOCAL DATABASE IF ONE DOES NOT EXIST. DB IS UNIQUE FOR EACH MACHINE SINCE EMPLOYEES AND MANAGERS FOR EACH RESTAURANT DIFFER.
     public class DbInitializer
     {
+        //METHOD IS CALLED IN Program.cs MAIN METHOD
         public static void Initialize(TimeTrackingContext context)
         {
             context.Database.EnsureCreated();
@@ -24,6 +27,7 @@ namespace TimeTrackingApplication.Data
 
             if (context.Roles.Any())
             {
+                Console.WriteLine(context); //*****If the database has already been initialized, add breakpoint here to view the database tables and records!
                 return;
             }
 
@@ -61,7 +65,7 @@ namespace TimeTrackingApplication.Data
             context.Contacts.Add(contact);
             context.SaveChanges();
 
-            var adminRole = context.Roles.Where(role => role.Name == "Admin").FirstOrDefault(); //Query to grab admin role (USE FOR FUTURE QUERYING!)
+            var adminRole = context.Roles.Where(role => role.Name == "Admin").FirstOrDefault();
 
             var employee = new Employee {
                 FirstName = "Admin",
@@ -76,6 +80,7 @@ namespace TimeTrackingApplication.Data
 
             context.SaveChanges();
 
+            Console.WriteLine(context); //*****add breakpoint here to view the database tables and records!
 
         }
     }

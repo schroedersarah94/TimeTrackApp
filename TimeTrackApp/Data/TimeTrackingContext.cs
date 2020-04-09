@@ -7,6 +7,8 @@ using TimeTrackingApplication.Models;
 
 namespace TimeTrackingApplication.Data
 {
+    //THIS CLASS SETS UP THE DATABASE CONTEXT
+
     public class TimeTrackingContext : DbContext
     {
         public TimeTrackingContext(DbContextOptions<TimeTrackingContext> options) : base(options)
@@ -23,7 +25,7 @@ namespace TimeTrackingApplication.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Overriding table name generation
+            //Overriding table name generation (avoiding gross table names)
 
             modelBuilder.Entity<Contact>().ToTable("Contacts");
             modelBuilder.Entity<Employee>().ToTable("Employees");

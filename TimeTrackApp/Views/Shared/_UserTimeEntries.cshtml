@@ -1,36 +1,28 @@
 ﻿@model IEnumerable<TimeTrackingApplication.Models.TimeEntry>
 
-<!-- THIS PAGE NOT WORKING YET. NEEDS ACTUAL TIME ENTRIES ADDED TO DATABASE
-    IN ORDER TO WORK OR BE TESTED -->
+@{
+    //TODO: BRING USER LOGIN INFORMATION TO FILTER TIMEENTRY MODEL BY EMPLOYEE ID
+}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Task Type
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClockIn)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClockOut)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        @*<tbody>
-            @foreach (var item in Model)
+<!-- THIS PARTIAL VIEW DISPLAYS A TABLE OF TIME ENTRIES BASED ON GIVEN USER-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClockIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClockOut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- THIS IS NOT WORKING DUE TO MODEL ISSUE -->
+        @*@foreach (var item in loggedUserEntries)
             {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Task.Name)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ClockIn)
                 </td>
@@ -39,10 +31,9 @@
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
-            }
-        </tbody>*@
-    </table>
+            }*@
+    </tbody>
+</table>
