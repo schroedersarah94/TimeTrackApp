@@ -27,8 +27,12 @@ namespace TimeTrackingApplication.Data
         {
             //Overriding table name generation (avoiding gross table names)
 
-            modelBuilder.Entity<Contact>().ToTable("Contacts");
-            modelBuilder.Entity<Employee>().ToTable("Employees");
+            modelBuilder.Entity<Contact>()
+                .ToTable("Contacts");
+            modelBuilder.Entity<Employee>()
+                .ToTable("Employees")
+                .Property(e => e.PTO)
+                .HasDefaultValue(80);
             modelBuilder.Entity<PTORequest>().ToTable("PTORequests");
             modelBuilder.Entity<Role>().ToTable("Roles");
             modelBuilder.Entity<Status>().ToTable("Statuses");

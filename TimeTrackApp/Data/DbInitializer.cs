@@ -15,15 +15,21 @@ namespace TimeTrackingApplication.Data
         {
             context.Database.EnsureCreated();
 
-            //clearing database so it is rebuilt every time, this is for programming purposes ONLY.
-            context.Contacts.RemoveRange(context.Contacts);
-            //context.SaveChanges();
+            //UNCOMMENTING THIS SECTION WILL CLEAR THE DATABASE ENTIRELY AND SET NEW ID'S TO ALL OBJECTS. PLEASE USE THIS ONLY FOR TESTING PURPOSES!!!!
+            /*context.Contacts.RemoveRange(context.Contacts);
+            context.SaveChanges();
             context.Roles.RemoveRange(context.Roles);
-            //context.SaveChanges();
+            context.SaveChanges();
             context.Employees.RemoveRange(context.Employees);
-            //context.SaveChanges();
+            context.SaveChanges();
             context.Statuses.RemoveRange(context.Statuses);
-            //context.SaveChanges();
+            context.SaveChanges();
+            context.Tasks.RemoveRange(context.Tasks);
+            context.SaveChanges();
+            context.PTORequests.RemoveRange(context.PTORequests);
+            context.SaveChanges();
+            context.TimeEntries.RemoveRange(context.TimeEntries);
+            context.SaveChanges();*/
 
             if (context.Roles.Any())
             {
@@ -46,6 +52,24 @@ namespace TimeTrackingApplication.Data
             }
             context.SaveChanges();
 
+            //MAIN TASKS
+            var tasks = new Models.Task[]
+                {
+                    new Models.Task{ Name="Janitorial", ManagerialTask=false },
+                    new Models.Task{ Name="Front Cashier", ManagerialTask=false },
+                    new Models.Task{ Name="Window Cashier", ManagerialTask=false },
+                    new Models.Task{ Name="Cook", ManagerialTask=false },
+                    new Models.Task{ Name="Restock", ManagerialTask=false },
+                    new Models.Task{ Name="Shift Manager", ManagerialTask=true },
+                    new Models.Task{ Name="Scheduling / Paperwork", ManagerialTask=true }
+                };
+
+            foreach (Models.Task task in tasks)
+            {
+                context.Tasks.Add(task);
+            }
+            context.SaveChanges();
+
             //MAIN REQUEST STATUSES
             var statuses = new Status[]
             {
@@ -60,7 +84,7 @@ namespace TimeTrackingApplication.Data
             }
             context.SaveChanges();
 
-            //ADMIN EMPLOYEE
+            //ADMIN EMPLOYEE (AND CONTACT)
             var contact = new Contact { Address = "123 Road Drive", City = "cityville", State = "MI", Phone = "1234567890" };
             context.Contacts.Add(contact);
             context.SaveChanges();

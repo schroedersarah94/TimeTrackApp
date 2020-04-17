@@ -4,12 +4,50 @@
 
 <!-- THIS IS THE LOG IN PAGE -->
 
-    <div class="text-center">
-        <h1>Time Trackr.</h1>
+    <div class="text-center login-module">
+        <h1>WacDonald's Time Management</h1>
 
         @using(Html.BeginForm("Main", "Home"))
         {
-            <input type="text" name="pin" />
-            <input type="submit" value="Log In" />
+            <div><input class="text-input" type="text" name="pin" placeholder="Enter PIN" /></div>
+            <div><input class="btn-main" type="submit" value="Log In" /></div>
         }
     </div>
+
+<style>
+    .login-module {
+        width: 45%;
+        margin: auto;
+        font-family: sans-serif;
+        background-color: #ffff;
+        border-radius: 3px;
+        border: 1px solid hsla(0, 0%, 90%, 1);
+        box-shadow: 0px 0px 5px hsla(0, 0%, 74%, 1);
+        border-bottom: 5px solid #db0007;
+        padding: 2em;
+    }
+
+    .text-input {
+        padding: 14px;
+        border-radius: 3px;
+        background-color: #e6e6e6;
+        border: none;
+        margin: 10px 0px;
+        width: 100%;
+        color: #656565;
+        font-size: 1.5vw;
+    }
+
+    .btn-main {
+        font-size: 2.5vw;
+        background-color: hsl(44, 100%, 71%);
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .btn-main:hover {
+        background-color: #ffbc0d;
+    }
+</style>

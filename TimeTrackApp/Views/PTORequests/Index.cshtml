@@ -5,13 +5,69 @@
 
 <div>PTO Request Form</div>
 
-<input id="ptoHours" type="number" min="1" max="80" placeholder="Hours requested" />
-<input id="ptoReason" type="text" placeholder="Reason for request..." />
+<input class="input-choice" id="ptoHours" type="number" min="1" max="80" placeholder="Hours requested" />
+<textarea class="input-textbox" id="ptoReason" rows="3" placeholder="Reason for request..." ></textarea>
 
-<div>Request will automatically display as "In Process" until it has been reviewed.</div>
+<div>Request will automatically display as "In Process" until it has been reviewed.</div><br/>
 
-<input type="submit" onclick="addRequest()" value="Submit PTO Request"/>
-<a onclick="history.back()">&#60; Main Menu</a>
+<input class="btn-main" type="submit" onclick="addRequest()" value="Submit PTO Request"/>
+<a class="btn-secondary" onclick="history.back()">&#60; Main Menu</a>
+
+<style>
+    .input-choice {
+        padding: 14px;
+        border-radius: 3px;
+        background-color: #e6e6e6;
+        border: none;
+        margin: 10px 0px;
+        width: 45%;
+        color: #656565;
+        font-size: 1.5vw;
+    }
+
+    .input-textbox {
+        padding: 14px;
+        border-radius: 3px;
+        background-color: #e6e6e6;
+        border: none;
+        margin: 10px 0px;
+        width: 60%;
+        color: #656565;
+        font-size: 1.5vw;
+    }
+
+    .btn-main {
+        font-size: 2.5vw;
+        background-color: hsl(44, 100%, 71%);
+        border: none;
+        border-radius: 6px;
+        padding: 15px;
+    }
+
+        .btn-main:hover {
+            background-color: #ffbc0d;
+        }
+
+    .btn-secondary {
+        background-color: #fff;
+        border: 1px solid #7b7b7b;
+        border-radius: 3px;
+        padding: 10px;
+        font-size: 1.2vw;
+        margin: 15px 0px;
+        color: #4e4e4e;
+        display: block;
+        width: 20%;
+        text-align: center;
+    }
+
+        .btn-secondary:hover {
+            color: #fff !important;
+            background-color: #ad585a;
+            border-color: #ad585a;
+            text-decoration: none;
+        }
+</style>
 
 <script>
     function addRequest() {

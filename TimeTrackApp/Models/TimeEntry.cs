@@ -10,6 +10,7 @@ namespace TimeTrackingApplication.Models
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
+
         public int TaskId { get; set; }
         public DateTime ClockIn { get; set; }
         public DateTime ClockOut { get; set; }

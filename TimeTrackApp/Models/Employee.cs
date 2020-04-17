@@ -20,14 +20,21 @@ namespace TimeTrackingApplication.Models
         [Required]
         public int RoleId { get; set; }
 
+        [Required]
         public int ContactId { get; set; }
 
         public bool ClockedIn { get; set; }
 
-
-
         public Role Role { get; set; }
 
         public Contact Contact { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", FirstName, LastName);
+            }
+        }
     }
 }

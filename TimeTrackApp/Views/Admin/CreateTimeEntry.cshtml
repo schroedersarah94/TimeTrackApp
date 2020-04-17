@@ -1,0 +1,43 @@
+﻿@model TimeTrackingApplication.Models.TimeEntry
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TimeEntry</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateTimeEntry">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Employee.FullName" class="control-label"></label>
+                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeNames"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Task.Name" class="control-label"></label>
+                <select asp-for="TaskId" class="form-control" asp-items="ViewBag.TaskNames"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClockIn" class="control-label"></label>
+                <input asp-for="ClockIn" class="form-control" />
+                <span asp-validation-for="ClockIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClockOut" class="control-label"></label>
+                <input asp-for="ClockOut" class="form-control" />
+                <span asp-validation-for="ClockOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

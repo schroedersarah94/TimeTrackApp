@@ -1,32 +1,66 @@
-﻿@model IEnumerable<TimeTrackingApplication.Models.PTORequest>
+﻿
 @{
     ViewData["Title"] = "Home Page";
-    //TODO: 
+    //TODO: user info
+    //TODO: display time entries
+    //TODO: display PTORequests
+    //TODO: get multiple models on one page working
+    //TODO: clock in/out
+
+    var loggedEmployee = true; // Model.Where(emp => emp.Id == 33).FirstOrDefault();
 }
 
 <!--THIS IS THE MAIN DASHBOARD OF THE APPLICATION, IT DISPLAYS USER INFORMATION AND OPTIONS THE USER CAN TAKE-->
 
 <div class="text-center">
     <h1>Time Trackr.</h1>
-    <div>
-        <div>User information, blah blah blah</div>
-        <button>Clock In/Out</button> <!-- on click edit "timeentry" record and edit employee record "clockedin" boolean, put method in HomeController -->
-        @Html.ActionLink("Request PTO", "Index", "PTORequests")
-        @Html.ActionLink("Admin Page", "Index", "Admin")
+    <div class="row">
+        
+        <div class="col-4">
+            <button asp-action="clockInOut" class="btn-main">Clock Out</button> <!-- on click, edit "timeentry" record and edit employee record "clockedin" boolean, put method in HomeController -->
+            @Html.ActionLink("Request PTO", "Index", "PTORequests", null, new { @class = "btn-secondary" })
+            @Html.ActionLink("Admin Page", "Index", "Admin", null, new { @class = "btn-secondary" })
+        </div>
+        <div class="col-8">
+            @*@Html.Partial("~/Views/Shared/_UserTimeEntries.cshtml");*@
+
+            @*@Html.Partial("~/Views/Shared/_UserPTORequestStatus.cshtml", Model.Where(item => item.Employee.Id == 33)) *@ <!-- hard coded, still working through user auth as global variable-->
+        </div>
     </div>
 
-    <div>
-        <div>Time Entries</div>
-
-        <!-- NEED TO GET MULTIPLE MODELS IN ONE VIEW WORKING!!!!! hskjfh kseuhrf sifhskdjfh wioef hwsikfh sd -->
-        @*@Html.Partial("~/Views/Shared/_UserTimeEntries.cshtml");*@ 
-
-    </div>
-
-
-    <div>
-        <div>PTO Request Status</div>
-        @Html.Partial("~/Views/Shared/_UserPTORequestStatus.cshtml")
-    </div>
+    
 
 </div>
+
+<style>
+    .btn-main {
+        font-size: 2.5vw;
+        background-color: hsl(44, 100%, 71%);
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .btn-main:hover {
+        background-color: #ffbc0d;
+    }
+
+    .btn-secondary {
+        background-color: #fff;
+        border: 1px solid #7b7b7b;
+        border-radius: 3px;
+        padding: 12px;
+        font-size: 1.1vw;
+        margin: 15px 0px;
+        color: #4e4e4e;
+        display: block;
+    }
+
+    .btn-secondary:hover {
+        color: #fff;
+        background-color: #ad585a;
+        border-color: #ad585a;
+        text-decoration: none;
+    }
+</style>

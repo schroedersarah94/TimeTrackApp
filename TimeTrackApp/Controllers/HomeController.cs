@@ -18,10 +18,12 @@ namespace TimeTrackApp.Controllers
     {
         //DB CONTEXT VARIABLE AND METHOD
         private readonly TimeTrackingContext _context;
+        //private readonly Microsoft.AspNetCore.Identity.UserManager<Employee> _userManager;
 
         public HomeController(TimeTrackingContext context)
         {
             _context = context;
+            //_userManager = _userManager;
         }
 
 

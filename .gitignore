@@ -14,5 +14,7 @@ TimeTrackApp/Properties/
 TimeTrackApp.sln
 
 TimeTrackApp/bin/
+TimeTrackApp/bin/Debug/
+TimeTrackApp/bin/Debug/netcoreapp3.1/
 
 TimeTrackApp/obj/

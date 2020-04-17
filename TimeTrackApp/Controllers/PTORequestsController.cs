@@ -30,29 +30,25 @@ namespace TimeTrackApp.Controllers
 
 
         //WIP: this method will create a new request from the logged in user. WORRY ABOUT ERROR HANDLING LATER
-        public JsonResult AddRequest(Employee employee, int hours, string reason)
+        public async Task<IActionResult> AddRequest(Employee employee, int hours, string reason)
         {
-            try
-            {
-                employee = _context.Employees.Where(emp => emp.Id == 26).FirstOrDefault(); //PLACEHOLDER VALUE FOR FUTURE LOGGED IN USER
-
-                PTORequest newRequest = new PTORequest
+                employee = _context.Employees.Where(emp => emp.Id == 33).FirstOrDefault(); //PLACEHOLDER VALUE FOR FUTURE LOGGED IN USER****
+                if(employee.Id == 0 || employee == null)
                 {
-                    Employee = employee, //not sure if this can be passed as an employee object from the view
-                    Hours = hours,
-                    Reason = reason,
-                    Status = _context.Statuses.Where(stat => stat.Name == "In Process").FirstOrDefault()
-                };
+                    PTORequest newRequest = new PTORequest
+                    {
 
-                _context.Add(newRequest);
-                //_context.SaveChanges(); //comment this line for front-end testing (aka: comment to not flood db)
-                return Json("Success");
+                        Employee = employee, //not sure if this can be passed as an employee object from the view
+                        Hours = hours,
+                        Reason = reason,
+                        Status = _context.Statuses.Where(stat => stat.Name == "In Process").FirstOrDefault()
+                    };
 
-            }
-            catch(Exception e)
-            {
-                return Json("Failure");
-            }            
+                    _context.Add(newRequest);
+                    await _context.SaveChangesAsync(); //comment this line for front-end testing (aka: comment to not flood db)
+                return RedirectToAction("Main", "Home");
+                }
+                return RedirectToAction("Index");       
         }
 
         public IActionResult Create()
@@ -74,8 +70,7 @@ namespace TimeTrackApp.Controllers
             ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id", pTORequest.EmployeeId);
             return View(pTORequest);
         }
-        
-        // GET: PTORequests/Edit/5
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,9 +87,6 @@ namespace TimeTrackApp.Controllers
             return View(pTORequest);
         }
 
-        // POST: PTORequests/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,Hours,Reason")] PTORequest pTORequest)
@@ -128,7 +120,6 @@ namespace TimeTrackApp.Controllers
             return View(pTORequest);
         }
 
-        // GET: PTORequests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

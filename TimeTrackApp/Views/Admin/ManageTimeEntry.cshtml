@@ -1,27 +1,22 @@
 ﻿@model IEnumerable<TimeTrackingApplication.Models.TimeEntry>
 
 @{
-    ViewData["Title"] = "ManageTimeEntry";
+    ViewData["Title"] = "Index";
 }
-
-<!-- THIS ADMIN PAGE DISPLAYS ALL CURRENT TIME ENTRIES, AND GIVES THE ADMIN PERMISSION TO ADD, EDIT, AND DELETE THEM -->
 
 <h1>Manage Time Entries</h1>
 
 <p>
-    <a asp-action="Create">Create New Time Entry</a>
+    <a asp-action="CreateTimeEntry">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.FirstName)
+                @Html.DisplayNameFor(model => model.Employee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Employee.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Task.Name)
+                @Html.DisplayNameFor(model => model.Task)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ClockIn)
@@ -29,6 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ClockOut)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,23 +32,20 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Employee.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Employee.LastName)
+                    @Html.DisplayFor(modelItem => item.Employee.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Task.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ClockIn.Date) @Html.DisplayFor(modelItem => item.ClockIn.TimeOfDay)
+                    @Html.DisplayFor(modelItem => item.ClockIn)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ClockOut.Date) @Html.DisplayFor(modelItem => item.ClockOut.TimeOfDay)
+                    @Html.DisplayFor(modelItem => item.ClockOut)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="EditTimeEntry" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DeleteTimeEntry" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
